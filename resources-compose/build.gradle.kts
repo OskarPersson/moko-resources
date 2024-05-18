@@ -47,6 +47,9 @@ kotlin {
         named("androidMain") {
             dependencies {
                 api(libs.composeUi)
+                api(libs.coil)
+                api(libs.coil.compose)
+                api(libs.coil.svg)
             }
         }
 
