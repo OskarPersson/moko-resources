@@ -32,6 +32,9 @@ internal class AndroidImageResourceGenerator(
     )
 
     override fun generateInitializer(metadata: ImageMetadata): CodeBlock {
+        if (metadata.values.first().filePath.extension == "svg") {
+            return CodeBlock.of("ImageResource(R.raw.%L)", processKey(metadata.key))
+        }
         return CodeBlock.of("ImageResource(R.drawable.%L)", processKey(metadata.key))
     }
 
@@ -73,23 +76,19 @@ internal class AndroidImageResourceGenerator(
                 }
             }
             val themeSuffix = item.appearance.resourceSuffix
-            val drawableDirName = "drawable$themeSuffix$densityRes"
+            val drawableDirName = if (item.quality == null) {
+                "raw"
+            } else {
+                "drawable$themeSuffix$densityRes"
+            }
 
             val drawableDir = File(resourcesGenerationDir, drawableDirName)
             val processedKey: String = processKey(key)
 
-            val resourceExtension: String = if (item.quality == null) {
-                "xml"
-            } else {
-                item.filePath.extension
-            }
+            val resourceExtension: String = item.filePath.extension
 
             val resourceFile = File(drawableDir, "$processedKey.$resourceExtension")
-            if (item.quality == null) {
-                parseSvgToVectorDrawable(item.filePath, resourceFile)
-            } else {
-                item.filePath.copyTo(resourceFile)
-            }
+            item.filePath.copyTo(resourceFile)
         }
     }
 
