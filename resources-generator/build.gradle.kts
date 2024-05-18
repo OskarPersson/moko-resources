@@ -14,7 +14,7 @@ plugins {
     kotlin("plugin.serialization") version ("1.9.0")
 }
 
-group = "dev.icerock.moko"
+group = "com.oskar"
 version = moko.versions.resourcesVersion.get()
 
 dependencies {
@@ -52,7 +52,7 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile>()
 gradlePlugin {
     plugins {
         create("multiplatform-resources") {
-            id = "dev.icerock.mobile.multiplatform-resources"
+            id = "com.oskar.multiplatform-resources"
             implementationClass = "dev.icerock.gradle.MultiplatformResourcesPlugin"
 
             displayName = "MOKO resources generator plugin"
