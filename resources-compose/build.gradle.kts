@@ -20,7 +20,7 @@ android {
         minSdk = 21
     }
 
-    namespace = "dev.icerock.moko.resources.compose"
+    namespace = "com.oskar.moko.resources.compose"
 }
 
 kotlin {

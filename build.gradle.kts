@@ -20,7 +20,7 @@ buildscript {
 
 allprojects {
     plugins.withId("org.gradle.maven-publish") {
-        group = "dev.icerock.moko"
+        group = "com.oskar.moko"
         version = moko.versions.resourcesVersion.get()
     }
 }
