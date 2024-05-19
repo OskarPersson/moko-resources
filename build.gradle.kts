@@ -12,7 +12,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.oskar:resources-generator")
+        classpath("dev.icerock.moko:resources-generator")
         classpath(libs.composeJetBrainsPlugin)
         classpath(":resources-build-logic")
     }
