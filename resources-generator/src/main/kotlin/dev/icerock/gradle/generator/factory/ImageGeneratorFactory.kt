@@ -44,7 +44,7 @@ internal class ImageGeneratorFactory(
             generator = ImageResourceGenerator(),
             platformResourceGenerator = createPlatformImageGenerator(),
             filter = {
-                include("images/**/*.png", "images/**/*.jpg", "images/**/*.svg")
+                include("images/**/*.png", "images/**/*.jpg", "images/**/*.svg", "images/**/*.avif")
             }
         )
     }
